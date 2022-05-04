@@ -25,7 +25,7 @@ class Station:
     """ABC News Station."""
 
     name: str
-    aliases: list(str)
+    aliases: list
     # Images for each station can be found at: https://www.abc.net.au/radio/stations/
     image_file: str
     color: str
@@ -74,42 +74,42 @@ stations = [
         name="ABC News",
         aliases=[],
         image_file="abc-news.png",
-        color="#000",
+        color="#000000",
         stream="news_radio.pls",
     ),
     Station(
         name="ABC Radio National",
         aliases=["ABC RN"],
         image_file="abc-radio-national.png",
-        color="#",
+        color="#ac1c1c",
         stream="radio_national.pls",
     ),
     Station(
         name="ABC Sport",
         aliases=[],
         image_file="abc-sport.png",
-        color="#",
+        color="#2eab2b",
         stream="grandstand.pls",
     ),
     Station(
         name="triple j",
         aliases=[],
         image_file="triple-j.png",
-        color="#",
+        color="#E03125",
         stream="triplej.pls",
     ),
     Station(
         name="triple j Unearthed",
         aliases=["unearthed"],
         image_file="unearthed.png",
-        color="#",
+        color="#3f752c",
         stream="unearthed.pls",
     ),
     Station(
         name="Double J",
         aliases=["dig music"],
         image_file="double-j.png",
-        color="#",
+        color="#000000",
         stream="dig_music.pls",
     ),
     # Station(
