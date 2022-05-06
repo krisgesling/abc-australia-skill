@@ -134,17 +134,6 @@ Mycroft.CardDelegate {
                     height: Mycroft.Units.gridUnit * 5
 
                     Title {
-                        id: newsBriefingTitle
-                        anchors.top: parent.top
-                        font.pixelSize: 35
-                        font.styleName: "Bold"
-                        color: theme.fgColor
-                        heightUnits: 3
-                        text: "News Briefing"
-                        maxTextLength: 20
-                    }
-
-                    Title {
                         id: station
                         anchors.top: newsBriefingTitle.bottom
                         anchors.topMargin: Mycroft.Units.gridUnit
