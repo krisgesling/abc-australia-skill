@@ -1,4 +1,4 @@
-# Copyright 2021 Mycroft AI Inc.
+# Copyright 2022 Mycroft AI Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,10 +26,10 @@ def find_mime_type(url: str) -> str:
     Returns:
         Mime type - defaults to 'audio/mpeg'
     """
-    mime = 'audio/mpeg'
+    mime = "audio/mpeg"
     response = requests.Session().head(url, allow_redirects=True)
     if 200 <= response.status_code < 300:
-        mime = response.headers['content-type']
+        mime = response.headers["content-type"]
     return mime
 
 
@@ -47,16 +47,16 @@ def contains_html(file: str) -> bool:
         Whether a <html> tag was found
     """
     found_html = False
-    tmp_file = '/tmp/mycroft-news-html-check'
+    tmp_file = "/tmp/mycroft-news-html-check"
     try:
         # Copy file to prevent locking larger file being downloaded
         copyfile(file, tmp_file)
-        with open(tmp_file, mode='r', encoding="utf-8") as f:
+        with open(tmp_file, mode="r", encoding="utf-8") as f:
             for line in f:
-                if '<html>' in line:
+                if "<html>" in line:
                     found_html = True
                     break
     except SpecialFileError as error:
-        if 'is a named pipe' in error.args[0]:
+        if "is a named pipe" in error.args[0]:
             LOG.debug('File is a "named pipe" as expected.')
     return found_html

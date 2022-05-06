@@ -1,4 +1,4 @@
-# Copyright 2018 Mycroft AI Inc.
+# Copyright 2022 Mycroft AI Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -101,13 +101,9 @@ class ABCRadioSkill(CommonPlaySkill):
 
     def CPS_start(self, _, data):
         """Handle request from Common Play System to start playback."""
-        self.log.error(data)
         for station in stations:
-            self.log.info(station.name)
             if station.name == data["name"]:
                 return self._play_station(station)
-        self.log.error("FAIL")
-        return
 
     def CPS_match_query_phrase(self, phrase: str) -> Tuple[str, float, dict]:
         """Respond to Common Play Service query requests.

@@ -1,4 +1,4 @@
-# Copyright 2021 Mycroft AI Inc.
+# Copyright 2022 Mycroft AI Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,12 +23,14 @@ from .station import stations
 
 class MatchConfidence(enum.Enum):
     """Minimum confidence levels for Common Play matching"""
+
     EXACT = 0.9
     HIGH = 0.8
     LIKELY = 0.7
     GENERIC = 0.6
 
-Match = namedtuple('Match', 'station confidence')
+
+Match = namedtuple("Match", "station confidence")
 
 
 def match_station_name(phrase, station):
@@ -47,7 +49,8 @@ def match_station_name(phrase, station):
         fuzzy_match(phrase, station.name.lower()),
     ]
     match_confidences.extend(
-        [fuzzy_match(phrase, alias.lower()) for alias in station.aliases])
+        [fuzzy_match(phrase, alias.lower()) for alias in station.aliases]
+    )
 
     highest_confidence = max(match_confidences)
     return Match(station, highest_confidence)
