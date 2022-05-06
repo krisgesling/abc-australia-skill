@@ -140,15 +140,15 @@ class ABCRadioSkill(CommonPlaySkill):
         """
         try:
             self.log.info(f"Playing station: {station.name}")
-            self.enable_intent('handle_show_player')
             media_url = station.mp3_stream
             self.log.info(f"Station url: {media_url}")
             mime = find_mime_type(media_url)
             # Ensure announcement of station has finished before playing
             wait_while_speaking()
 
-            # We support streaming
+            self.status = Status.PLAYING
             self.CPS_play((media_url, mime))
+            self.enable_intent('handle_show_player')
 
             self.gui["media"] = {
                 "image": str(station.image_path),
